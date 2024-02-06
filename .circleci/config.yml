@@ -1,0 +1,54 @@
+version: 2.1
+executors:
+  default:
+    docker:
+      - image: circleci/python:3.9
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: |
+            sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+            sudo apt-get update && sudo apt-get install -y google-chrome-stable
+            
+            # Download and set up ChromeDriver
+            wget -N https://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip -d ~/bin
+            sudo mv ~/bin/chromedriver /usr/local/bin/chromedriver
+            sudo chmod +x /usr/local/bin/chromedriver
+
+            # Install GeckoDriver
+            wget -N https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+            tar -xzf geckodriver-v0.33.0-linux64.tar.gz
+            sudo mv geckodriver /usr/local/bin/
+            sudo chmod +x /usr/local/bin/geckodriver
+            
+            chmod +x /home/circleci/project/utils/drivers/chromedriver
+            chmod +x /home/circleci/project/utils/drivers/geckodriver
+      - run:
+          name: Run Selenium Tests
+          command: cd tests && robot --variable browser:chrome --include Login .
+      - run:
+          name: Modify report CSS
+          command: |
+            sed -i 's#http://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ff53917fbbdb5ef820abbbe4d199a6942dc771ff/v3html/css/extent.css#extent.css#g' /home/circleci/project/test-output/HtmlReport/ExtentHtml.html
+            sed -i 's#http://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ff53917fbbdb5ef820abbbe4d199a6942dc771ff/v3html/js/extent.js#extent.js#g' /home/circleci/project/test-output/HtmlReport/ExtentHtml.html
+            cd /home/circleci/project/test-output/HtmlReport
+            cat ExtentHtml.html
+            ls
+      - store_artifacts:
+          path: test-output/HtmlReport
+          destination: extent-reports
+      - store_test_results:
+          path: test-output/HtmlReport
+
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - build

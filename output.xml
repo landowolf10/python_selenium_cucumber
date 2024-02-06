@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.5 on win32)" generated="2024-02-01T11:29:05.935679" rpa="false" schemaversion="5">
+<suite id="s1" name="Python Selenium Cucumber" source="C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber">
+<suite id="s1-s1" name="Tests" source="C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\tests">
+<suite id="s1-s1-s1" name="Login" source="C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\tests\login.robot">
+<test id="s1-s1-s1-t1" name="Validate successful login to Sauce Lab demo app" line="15">
+<for flavor="IN">
+<iter>
+<kw name="Given I navigate to SauceLab demo page">
+<msg time="2024-02-01T11:29:06.459702" level="FAIL">No keyword with name 'Given I navigate to SauceLab demo page' found.</msg>
+<arg>${browser}</arg>
+<status status="FAIL" start="2024-02-01T11:29:06.459702" elapsed="0.000000">No keyword with name 'Given I navigate to SauceLab demo page' found.</status>
+</kw>
+<kw name="When I type the credentials">
+<arg>${user_name}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" start="2024-02-01T11:29:06.459702" elapsed="0.000000"/>
+</kw>
+<kw name="And click the login button">
+<status status="NOT RUN" start="2024-02-01T11:29:06.460706" elapsed="0.000000"/>
+</kw>
+<var name="${browser}">Chrome</var>
+<status status="FAIL" start="2024-02-01T11:29:06.458713" elapsed="0.001993">No keyword with name 'Given I navigate to SauceLab demo page' found.</status>
+</iter>
+<var>${browser}</var>
+<value>@{browsers}</value>
+<status status="FAIL" start="2024-02-01T11:29:06.457702" elapsed="0.003004">No keyword with name 'Given I navigate to SauceLab demo page' found.</status>
+</for>
+<tag>Login</tag>
+<status status="FAIL" start="2024-02-01T11:29:06.457702" elapsed="0.003004">No keyword with name 'Given I navigate to SauceLab demo page' found.</status>
+</test>
+<kw name="Close browser session" type="TEARDOWN">
+<msg time="2024-02-01T11:29:06.462703" level="FAIL">No keyword with name 'Close browser session' found.</msg>
+<status status="FAIL" start="2024-02-01T11:29:06.462703" elapsed="0.000000">No keyword with name 'Close browser session' found.</status>
+</kw>
+<doc>This test suite contains app tests for the login page</doc>
+<status status="FAIL" start="2024-02-01T11:29:06.362741" elapsed="0.099962">Suite teardown failed:
+No keyword with name 'Close browser session' found.</status>
+</suite>
+<status status="FAIL" start="2024-02-01T11:29:06.360721" elapsed="0.103980"/>
+</suite>
+<status status="FAIL" start="2024-02-01T11:29:05.939138" elapsed="0.526840"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Login</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Python Selenium Cucumber">Python Selenium Cucumber</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">Python Selenium Cucumber.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Login">Python Selenium Cucumber.Tests.Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-02-01T11:29:06.451711" level="ERROR">Error in file 'C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\tests\login.robot' on line 4: Importing library 'C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\steps\common_steps.py' failed: ModuleNotFoundError: No module named 'pages'
+Traceback (most recent call last):
+  File "C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\steps\common_steps.py", line 4, in &lt;module&gt;
+    from pages.login_page import LoginPage
+PYTHONPATH:
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\steps
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\venv_selenium_test\Scripts\robot.exe
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311\python311.zip
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311\DLLs
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311\Lib
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\venv_selenium_test
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\venv_selenium_test\Lib\site-packages
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\..</msg>
+<msg time="2024-02-01T11:29:06.455710" level="ERROR">Error in file 'C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\tests\login.robot' on line 5: Importing library 'C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\steps\login_steps.py' failed: ModuleNotFoundError: No module named 'pages'
+Traceback (most recent call last):
+  File "C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\steps\login_steps.py", line 3, in &lt;module&gt;
+    from pages.login_page import LoginPage
+PYTHONPATH:
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\steps
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\venv_selenium_test\Scripts\robot.exe
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311\python311.zip
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311\DLLs
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311\Lib
+  C:\Users\orlan\AppData\Local\Programs\Python\Python311
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\venv_selenium_test
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\venv_selenium_test\Lib\site-packages
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\..
+  C:\Users\orlan\Documents\Projects\Automation\Selenium\python_selenium_cucumber\..</msg>
+</errors>
+</robot>
