@@ -42,10 +42,10 @@ jobs:
           name: Run Selenium Tests
           command: cd tests && robot --variable browser:chrome --include Login .
       - store_artifacts:
-          path: tests/report.html
+          path: ./tests
           destination: robot-report
       - store_test_results:
-          path: tests/report.html
+          path: ./tests
 
 workflows:
   version: 2
