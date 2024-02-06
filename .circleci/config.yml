@@ -2,11 +2,11 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: circleci/python:3.9
+      - image: circleci/python:3.9-browsers
 jobs:
   build:
     docker:
-      - image: circleci/python:3.9
+      - image: circleci/python:3.9-browsers
     steps:
       - checkout
       - run:
