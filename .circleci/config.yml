@@ -16,10 +16,12 @@ jobs:
             echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update && sudo apt-get install -y google-chrome-stable
             
-            # Download and set up ChromeDriver
-            CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-            wget -N https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+            # Download and set up ChromeDriver            
+            wget -N https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/121.0.6167.85/linux64/chromedriver-linux64.zip
             unzip chromedriver_linux64.zip
+            ls -l chromedriver
+            CHROMEDRIVER_EXTRACTED_VERSION=$(./chromedriver --version | grep -oP '(?<=ChromeDriver )[\d.]+')
+            echo "Extracted Chromedriver version: $CHROMEDRIVER_EXTRACTED_VERSION"
             rm -f /usr/local/bin/chromedriver  # Remove existing chromedriver
             sudo mv chromedriver /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver
