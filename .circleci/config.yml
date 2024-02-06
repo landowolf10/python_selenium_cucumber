@@ -40,9 +40,10 @@ jobs:
           command: pip install selenium robotframework assertpy
       - run:
           name: Run Selenium Chrome
-          command: |
-            cd tests && robot --variable browser:chrome --include Login .
-            ls
+          command: cd tests && robot --variable browser:chrome --include Login .
+      - run:
+          name: Run Selenium Firefox
+          command: cd tests && robot --variable browser:firefox --include Login .
       - store_artifacts:
           path: tests/report.html
           destination: robot-report
