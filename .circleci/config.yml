@@ -31,9 +31,13 @@ jobs:
             chmod +x /home/circleci/project/utils/drivers/chromedriver
             chmod +x /home/circleci/project/utils/drivers/geckodriver
       - run:
-          name: Install Robot Framework
+          name: Create and activate virtual environment
           command: |
-            pip install robotframework
+            python3 -m venv venv_selenium_test
+            source venv_selenium_test/bin/activate
+      - run:
+          name: Install dependencies
+          command: pip install selenium robotframework assertpy
       - run:
           name: Run Selenium Tests
           command: cd tests && robot --variable browser:chrome --include Login .
