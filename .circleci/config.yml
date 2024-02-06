@@ -31,6 +31,10 @@ jobs:
             chmod +x /home/circleci/project/utils/drivers/chromedriver
             chmod +x /home/circleci/project/utils/drivers/geckodriver
       - run:
+          name: Install Robot Framework
+          command: |
+            pip install robotframework
+      - run:
           name: Run Selenium Tests
           command: cd tests && robot --variable browser:chrome --include Login .
       - run:
