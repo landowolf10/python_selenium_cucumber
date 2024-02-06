@@ -24,6 +24,16 @@ jobs:
             sudo mv chromedriver /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver
 
+            # Verify Chrome version and chromedriver compatibility
+            CHROME_VERSION=$(google-chrome --version | grep -oP '(?<=Google Chrome )[\d.]+')
+            CHROMEDRIVER_VERSION=$(chromedriver --version | grep -oP '(?<=ChromeDriver )[\d.]+')
+            echo "Chrome version: $CHROME_VERSION"
+            echo "Chromedriver version: $CHROMEDRIVER_VERSION"
+            if [[ "$CHROME_VERSION" != "$CHROMEDRIVER_VERSION" ]]; then
+              echo "Error: Chromedriver version does not match Chrome version."
+              exit 1
+            fi
+
             # Install GeckoDriver
             wget -N https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
             tar -xzf geckodriver-v0.33.0-linux64.tar.gz
